@@ -1,0 +1,713 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/****************** Particulas ******************/
+#particles-js {
+  position: fixed; /* Fixa no fundo da tela */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Fica atrás de tudo */
+  pointer-events: none; /* Isso impede de bloquear cliques */
+}
+/**************** Gráficos *****************/
+.containerGrafico {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 200px;
+  left: 650px;
+}
+
+#graficoTarefas {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  position: relative;
+  left: 60%;
+}
+.Verificacao {
+    background: linear-gradient(180deg, #0E246D, #41378E); 
+    background: radial-gradient(circle at center, #2c003e, #090024, #000);
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;    /* Centraliza verticalmente */
+    height: 100vh;          /* Define a altura como 100% da janela */
+    margin: 0;              /* Remove margens padrão */
+}
+.Titulo {
+    color:  #efefef;
+    text-align: center;
+    font-size: 50px;
+    margin-top: 20%;
+}
+.entrada {
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: #270E54 0px 5px 20px 0px;
+    border-radius: 10px;
+    border: 1px solid;
+    opacity: 0.5;
+}
+.entrada:hover {
+    animation: subir 12s normal;
+    transform: ease;
+    opacity: 0.8;
+}
+#login {
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: #270E54 0px 5px 20px 0px;
+    border-radius: 5px;
+    border: 1px solid;
+    background: rgb(53, 28, 79);
+    color: #efefef;
+    font-size: 17px;
+}
+#login:hover {
+    opacity: 0.6;
+}
+.Paragrafo {
+    text-align: center;
+    display: block;
+    color: #efefef;
+    margin: 5px 0;
+    flex-direction: column;
+}
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #0E0323;
+}
+.container {
+    /* background: #8798F9; */
+    /* background: linear-gradient(120deg, #AC7FFF, #999999); */
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    opacity: 0.7;
+    border-radius: 30px;
+    width: 400px;
+    max-width: 400px;
+    height: 400px;
+    max-height: 400px;
+    display: flex; /* Ativa o Flexbox */
+    justify-content: center; /* Centraliza horizontalmente os itens */
+    align-items: center; /* Centraliza verticalmente os itens */
+    flex-direction: column; /* Opcional: organiza os itens em coluna */
+}
+/******************** Página de Cadastro ***************8*/
+.paginaCadastro {
+    /* background: linear-gradient(180deg, #0E246D, #41378E); */
+    background: radial-gradient(circle at center, #2c003e, #090024, #000);
+    opacity: 0.7;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;    /* Centraliza verticalmente */
+    height: 100vh;          /* Define a altura como 100% da janela */
+    margin: 0;              /* Remove margens padrão */
+}
+.containerCadastro {
+    /* background: linear-gradient(120deg, #AC7FFF, #999999); */
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    width: 400px;
+    max-width: 400px;
+    height: 460px;
+    max-height: 460px;
+    display: flex; /* Ativa o Flexbox */
+    justify-content: center; /* Centraliza horizontalmente os itens */
+    align-items: center; /* Centraliza verticalmente os itens */
+    flex-direction: column; /* Opcional: organiza os itens em coluna */
+}
+.tituloCadastro {
+    color:  #efefef;
+    text-align: center;
+    font-size: 50px;
+}
+.cadastro{
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: #270E54 0px 5px 20px 0px;
+    width: 300px;
+    height: 37px;
+    background-color: #efefef;
+    opacity: 0.5;
+    display: flex; /* Ativa o Flexbox */
+    justify-content: center; /* Centraliza horizontalmente os itens */
+    align-items: center; /* Centraliza verticalmente os itens */
+    flex-direction: column; /* Opcional: organiza os itens em coluna */
+    margin: 10px;
+}
+.cadastro:hover {
+    animation: subir 12s normal;
+    transform: ease;
+    opacity: 0.8;
+}
+.loginCadastro {
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: #270E54 0px 5px 20px 0px;
+    border-radius: 5px;
+    border: 1px solid;
+    background: rgb(53, 28, 79);
+    color: #efefef;
+    font-size: 17px;
+}
+.loginCadastro:hover {
+    opacity: 0.6;
+}
+
+/************* Página Atividades ****************/
+
+.Atividades {
+    margin: 0;
+    min-height: 10vh;
+    background: radial-gradient(circle at center, #2c003e, #090024, #000);
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+.Atividades::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+.paginaAtividades {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    width: 80%;
+    max-width: 1000px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    top: 40px;
+    position: relative;
+    z-index: 1;
+}
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+.logoHome {
+    width: 50px;
+    height: auto;
+}
+.linksContainer {
+    display: flex;
+    gap: 20px;
+}
+.linksAtividades {
+    text-decoration: none;
+    display: flex;
+    margin-left: 50px;
+    padding-right: 50px;
+    color: #7d689e70;
+}
+.linksAtividades:hover {
+    color: #efefef;
+    animation: subir 0.9s;
+}
+
+.containerAtividades2 {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    width: 500px;
+    height: 500px;
+    position: relative;
+    top: 80px;
+    left: -250px;
+    border-radius: 15px;
+    z-index: 1;
+}
+.TituloAtividades {
+    color: #efefef;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-shadow: 0 0 10px #12031a;
+}
+.Sub-tituloAtividades {
+    color: #efefef;
+    text-align: center;
+    padding-bottom: 15px;
+}
+#minhaLista{
+    color: #efefef;
+    list-style: none;
+    padding-left: 50px;
+    font-size: 20px;
+}
+.inputEntrada {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.botao {
+    display: flex;
+    position: relative;
+    left: 15px;
+    justify-content: center;
+    text-align: center;
+}
+.botao:hover {
+    opacity: 0.8;
+}
+.entradaAtividades{
+    width: 210px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    position: relative;
+}
+
+/************** Home ************/
+.Home {
+    margin: 0;
+    min-height: 10vh;
+    background: radial-gradient(circle at center, #2c003e, #090024, #000);
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 30px;
+    flex-direction: column;
+    align-items: center; 
+}
+.Home::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+.navbarHome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    width: 80%;
+    max-width: 1000px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    top: 40px;
+    position: relative;
+    z-index: 1;
+}
+.navbar-left {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.navbar-left .logoHome {
+    width: 50px;
+    height: auto;
+}
+.navbar-right {
+    text-decoration: none;
+    margin-left: 500px;
+    font-weight: 500;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+.linkHome {
+    text-decoration: none;
+    color: #7d689e70;
+}
+.linkHome:hover {
+    color: #efefef;
+    animation: subir 0.9s;
+}
+.tituloHome {
+    margin-top: 100px;
+}
+#tituloPrincipal {
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+.textoHome {
+    text-align: center;
+    margin-top: 10px;
+}
+.paragrafoHome {
+    text-align: center;
+    margin-top: 10px;
+}
+.linhaHome {
+    width: 1000px;
+    margin-top: 30px;
+    color: #2c003e;
+}
+.cardsHome {
+    width: 1000px;
+    height: 150px;
+    display: flex; /* Adiciona o display flex */
+    flex-direction: row; /* Garante alinhamento na horizontal */
+    justify-content: space-between; /* Espaço entre os cards */
+    align-items: center; /* Alinha verticalmente */
+    margin-top: 50px;
+    padding: 5px;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+.card1 {
+    /* flex: 1; Ocupa espaço igual */
+    height: 170px;
+    width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+.conteudoDev,
+.conteudoDetalhes {
+  position: absolute;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  padding: 10px;
+}
+/* Visibilidade inicial */
+.conteudoDev {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.conteudoDetalhes {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Efeito hover: troca os conteúdos */
+.card1:hover .conteudoDev {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.card1:hover .conteudoDetalhes {
+  opacity: 1;
+  transform: scale(1);
+}
+.card2 {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    width: 320px;
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+.Sobre,
+.conteudoSobre {
+  position: absolute;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  padding: 10px;
+}
+/* Visibilidade inicial */
+.Sobre {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.conteudoSobre {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Efeito hover: troca os conteúdos */
+.card2:hover .Sobre {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.card2:hover .conteudoSobre {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card3 {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    width: 320px;
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.Template,
+.conteudoTemplate {
+  position: absolute;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  padding: 10px;
+}
+/* Visibilidade inicial */
+.Template {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.conteudoTemplate {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Efeito hover: troca os conteúdos */
+.card3:hover .Template {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.card3:hover .conteudoTemplate {
+  opacity: 1;
+  transform: scale(1);
+}
+.card1:hover {
+    animation: subir 7s;
+}
+.card2:hover {
+    animation: subir 7s;
+}
+.card3:hover {
+    animation: subir 7s;
+}
+.imagem {
+    width: 1000px;
+    height: 200px;
+    display: flex;
+    position: relative;
+    margin-top: 50px;
+    flex-direction: column;
+    background-image: url(../style/imagens/capaHome.png);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.organizacaoHome {
+    width: 493px;
+    height: 300px;
+    display: flex;
+    position: relative;
+    top: 50px;
+    right: 250px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+}
+#organizacao-left {
+    width: 100%;
+    height: 100%;
+    display: flex;  
+}
+#status {
+    display: flex;
+    position: relative;
+    left: 220px;
+    top: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#timer {
+    font-size: 48px;
+    margin: 20px 0;
+    display: flex;
+    position: relative;
+    left: 150px;
+    top: 52px;
+    font-size: 80px;
+}
+.botaoFoco{
+    position: relative;
+    display: flex;
+    width: 70px;
+    height: auto;
+    left: 160px;
+    top: 60px;
+    text-align: center;
+    justify-content: center;
+    font-size: large;
+}
+.botaoFoco:hover {
+    opacity: 0.8;
+}
+.botaoFoco2 {
+    position: relative;
+    display: flex;
+    width: 70px;
+    height: auto;
+    left: 265px;
+    top: 36px;
+    text-align: center;
+    justify-content: center;
+    font-size: large;
+}
+.botaoFoco2:hover {
+    opacity: 0.8;
+}
+.foco {
+    background-color: #141456;
+    transition: background-color 0.5s ease;
+    border-radius: 15px;
+}
+
+.pausa {
+    background-color: #2a6041;
+    transition: background-color 0.5s ease;
+    border-radius: 15px;
+}
+.organizacaoHome2 {
+    width: 493px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    left: 248px;
+    top: -250px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+}
+.organizacao-right {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.frases {
+    max-width: 600px;
+    text-align: center;
+}
+.frase {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    animation: fadeIn 1s ease-in-out;
+    display: flex;
+    position: relative;
+    top: -90px;
+    left: 70px;
+}
+.containerLinks {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    top: 200px;
+    left: -420px;
+}
+#informativo {
+    display: flex;
+    position: relative;
+    top: 135px;
+    left: -160px;
+}
+#espaco {
+    padding-left: 5px;
+}
+.linksUteis {
+    max-width: 90px;
+    display: flex;
+    position: relative;
+    left: 200px;
+    padding: 10px;
+}
+#Github{
+    width: 43px;
+    height: auto;
+}
+#PowerBi {
+    width: 33px;
+    height: auto;
+    display: flex;
+    position: relative;
+    /* left: 10px; */
+}
+#Postman {
+    width: 41px;
+    height: auto;
+}
+#Musica {
+    width: 35px;
+    height: auto;
+    display: flex;
+    position: relative;
+}
+#Teams {
+    width: 45px;
+    height: auto;
+    position: relative;
+    display: flex;
+}
+#Documentacao {
+    width: 60px;
+    height: auto;
+    position: relative;
+    display: flex;
+}
+@keyframes subir {
+    0% {
+        transform: scale(1.0) ;
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="icon" type="png" href="../style/imagens/Logo3.png" >
+</head>
+<body class="Atividades">
+    <div id="particles-js"></div>
+    <div class="navbar">
+        <div class="logoContainer">
+            <img src="../style/imagens/Logo3.png" alt="Logo" class="logoHome">
+        </div>
+        <div class="linksContainer">
+            <a class="linksAtividades" href="home.html">Home</a>
+            <a class="linksAtividades" href="Atividades.html">Atividades</a>
+            <a class="linksAtividades" href="verificação.html">Login</a>
+        </div>
+    </div>
+    <div>
+        <div class="containerAtividades2">
+            <h1 class="TituloAtividades">Template</h1>
+            <p class="Sub-tituloAtividades">Faça o seu dia Produtivo!</p>
+            <div class="inputEntrada">
+                <br>
+                <input type="text" id="entradaAtividades" class="entradaAtividades" placeholder="Digite aqui suas demandas!">
+                <button onclick="adicionarTarefa()" class="botao">Adicionar</button>
+            </div>
+            <div>
+                <br>
+                <ul id="minhaLista"></ul>
+            </div>
+        </div>
+        <div class="containerGrafico">
+            <canvas id="graficoTarefas"></canvas>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="..//style/particles.js"></script>
+<script src="../style/movimento.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body class="paginaCadastro">
+    <div id="particles-js"></div>
+    <div class="containerCadastro">
+        <h1 class="tituloCadastro">Cadastro</h1>
+        <form action="/cadastrar" method="POST">
+            <input class="cadastro" type="text" id="nome" name="nome" placeholder="Nome" required>
+            <input class="cadastro" type="number" id="idade" name="idade" placeholder="Idade" required>
+            <input class="cadastro" type="email" id="email" name="email" placeholder="Email" required>
+            <input class="cadastro" type="password" id="senha" name="senha" placeholder="Senha" required>
+            <button class="loginCadastro" type="submit" id="botao">Cadastrar</button>
+        </form>
+        <p class="Paragrafo">Já tem cadastro?</p>
+        <a class="link" href="verificação.html">Login</a>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="../style/particles.js"></script>
+<script>
+    // identifica o botão de cadastro
+    const botao = document.getElementById('botao');
+
+    botao.addEventListener('click', () => {
+        // Pega o valor do campo de texto com o id 'nome', nesse caso seria o input de feito pelo usuário
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const idade = document.getElementById('idade').value;
+        const senha = document.getElementById('senha').value;
+        
+        // Envia a requisição POST para a API
+        fetch('http://127.0.0.1:5000/cadastro', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nome: nome, email: email, idade: idade, senha: senha }) // Envia o nome, email e senha como JSON no corpo da requisição
+        })
+        .then(response => response.json()) // Converte a resposta da API para JSON
+        .then(data => {
+            // Verifica se a resposta da API foi de sucesso
+            if (data.status === 'success') {
+                // Se o status for sucesso, redireciona para a URL fornecida pela API
+                window.location.href = data.redirect_to; // Redireciona usando a URL fornecida pela API
+            } else {
+                // Caso contrário, exibe a mensagem de erro
+                alert(data.message); // Exibe a mensagem de erro
+            }
+        })
+        .catch(error => {
+            // Se ocorrer um erro na requisição, exibe no console
+            console.error('Erro:', error); 
+            alert('Erro ao realizar a verificação. Tente novamente.');
+        });
+    });
+</script>
+</body>
+</html>
