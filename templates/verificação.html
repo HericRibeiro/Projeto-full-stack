@@ -15,42 +15,45 @@
         <a href="/cadastro" class="link">Cadastrar-se</a>
         <button type="submit" id="login">Verificar</button>
     </div>
-    <script>
-        // identifica o botão de login
-        const botao = document.getElementById('login');
+<script>
+    // ------------ Apis -----------------//
+    // -------- Verificação -----------//
+    // identifica o botão de login
+    const botao = document.getElementById("login");
 
-        // adiciona um evento de clique ao botão
-        botao.addEventListener('click', () => {
-            // Pega o valor do campo de texto com o id 'email', nesse caso seria o input de feito pelo usuário
-            const email = document.getElementById('email').value;
-            const senha = document.getElementById('senha').value;
+    // adiciona um evento de clique ao botão
+    botao.addEventListener("click", () => {
+    // Pega o valor do campo de texto com o id 'email', nesse caso seria o input de feito pelo usuário
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
 
-            // Envia a requisição POST para a API
-            fetch('http://127.0.0.1:5000/verificar_dados', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json', // Define o tipo de conteúdo como JSON
-                },
-                body: JSON.stringify({ email: email, senha: senha}) // Envia o email como JSON no corpo da requisição
-            })
-            .then(response => response.json()) // Converte a resposta da API para JSON
-            .then(data => {
-                // Verifica se a resposta da API foi de sucesso
-                if (data.status === 'success') {
-                    // Se o status for sucesso, redireciona para a URL fornecida pela API
-                    window.location.href = data.redirect_to; // Redireciona usando a URL fornecida pela API
-                } else {
-                    // Caso contrário, exibe a mensagem de erro
-                    alert(data.message); // Exibe a mensagem de erro
-                }
-            })
-            .catch(error => {
-                // Se ocorrer um erro na requisição, exibe no console
-                console.error('Erro:', error); 
-                alert('Erro ao realizar a verificação. Tente novamente.');
-            });
+    // Envia a requisição POST para a API
+    fetch("http://127.0.0.1:5000/verificar_dados", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token"), // Define o tipo de conteúdo como JSON
+        },
+        body: JSON.stringify({ email: email, senha: senha }), // Envia o email como JSON no corpo da requisição
+    })
+        .then((response) => response.json()) // Converte a resposta da API para JSON
+        .then((data) => {
+        // Verifica se a resposta da API foi de sucesso
+        if (data.status === "success") {
+            localStorage.setItem("token", data.token);
+            // Se o status for sucesso, redireciona para a URL fornecida pela API
+            window.location.href = data.redirect_to; // Redireciona usando a URL fornecida pela API
+        } else {
+            // Caso contrário, exibe a mensagem de erro
+            alert(data.message); // Exibe a mensagem de erro
+        }
+        })
+        .catch((error) => {
+        // Se ocorrer um erro na requisição, exibe no console
+        console.error("Erro:", error);
+        alert("Erro ao realizar a verificação. Tente novamente.");
         });
-    </script>
-
+    });
+</script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-const titulo = document.getElementById('tituloPrincipal');
+const titulo = document.getElementById("tituloPrincipal");
 const textos = ["O template feito para você!", "Não perca mais tempo!"];
 let indice = 0;
 let tempo = 1500; // 25 minutos
@@ -7,9 +7,9 @@ let emFoco = true;
 let demandas = 0;
 let concluidas = 0;
 
-setInterval (() => {
-    indice = (indice + 1) % textos.length;
-    titulo.textContent = textos[indice];
+setInterval(() => {
+  indice = (indice + 1) % textos.length;
+  titulo.textContent = textos[indice];
 }, 4000);
 
 console.log("Arquivo movimento.js carregado com sucesso!");
@@ -22,20 +22,22 @@ if (document.getElementById("graficoTarefas")) {
     type: "doughnut",
     data: {
       labels: ["Concluído", "Restante"],
-      datasets: [{
-        data: [concluidas, demandas],
-        backgroundColor: ["#4285F4", "#222631"],
-        borderWidth: 0
-      }]
+      datasets: [
+        {
+          data: [concluidas, demandas],
+          backgroundColor: ["#4285F4", "#222631"],
+          borderWidth: 0,
+        },
+      ],
     },
     options: {
       cutout: "70%",
       responsive: true,
       plugins: {
         legend: { display: false },
-        tooltip: { enabled: true }
-      }
-    }
+        tooltip: { enabled: true },
+      },
+    },
   });
 
   function atualizarGrafico() {
@@ -88,7 +90,7 @@ function startTimer() {
       document.getElementById("status").textContent = emFoco ? "Foco" : "Pausa";
       const div = document.getElementById("organizacao-left");
       div.className = `organizacao-left ${emFoco ? "foco" : "pausa"}`;
-      console.log("TRocou de foco")
+      console.log("TRocou de foco");
     }
   }, 1000);
 }
@@ -102,28 +104,29 @@ function resetTimer() {
 function atualizarDisplay() {
   let minutos = Math.floor(tempo / 60);
   let segundos = tempo % 60;
-  document.getElementById("timer").textContent =
-    `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+  document.getElementById("timer").textContent = `${minutos
+    .toString()
+    .padStart(2, "0")}:${segundos.toString().padStart(2, "0")}`;
 }
 
-//////////////// Frase motivacional (via sua API local)
+//////////////// Frase motivacional 
 
 async function carregarFrases() {
   try {
-    const response = await fetch('http://127.0.0.1:5000/motivacional'); // troque pela URL da sua API se for hospedada
+    const response = await fetch("http://127.0.0.1:5000/motivacional"); // troque pela URL da sua API se for hospedada
     const data = await response.json();
 
-    const frasesDiv = document.getElementById('frases');
-    frasesDiv.innerHTML = ''; // Limpa frases anteriores
+    const frasesDiv = document.getElementById("frases");
+    frasesDiv.innerHTML = ""; // Limpa frases anteriores
 
-    data.frases.forEach(frase => {
-      const p = document.createElement('p');
-      p.className = 'frase';
+    data.frases.forEach((frase) => {
+      const p = document.createElement("p");
+      p.className = "frase";
       p.textContent = frase;
       frasesDiv.appendChild(p);
     });
   } catch (error) {
-    console.error('Erro ao carregar frases:', error);
+    console.error("Erro ao carregar frases:", error);
   }
 }
 

@@ -3,12 +3,44 @@ import pandas as pd
 from flask import Flask, jsonify, request, redirect, url_for, render_template
 from flask_cors import CORS
 import sqlite3
-from flask import Flask, request, jsonify
 import random
+import os
+import jwt
+from datetime import datetime, timedelta
+from dotenv import load_dotenv
+from functools import wraps
 
-# Aplicação Flask
+# Carrega as variáveis de ambiente do arquivo .env
+load_dotenv()
 app = Flask(__name__)  
 CORS(app)
+
+Chave_Ultra_Secreta = os.getenv('CHAVE_ULTRA_SECRETA')
+
+# ----------------------- Decorator de Segurança -----------------------
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = request.headers.get('Authorization')
+        if not token:
+            return jsonify({
+                'status': 'error', 
+                'message': 'Token ausente'
+            }), 401
+        try:
+            jwt.decode(token, Chave_Ultra_Secreta, algorithms=["HS256"])
+        except jwt.ExpiredSignatureError:
+            return jsonify({
+                'status': 'error', 
+                'message': 'Token expirado!'
+            }), 401
+        except jwt.InvalidTokenError:
+            return jsonify({
+                'status': 'error', 
+                'message': 'Token inválido!'
+            }), 401
+        return f(*args, **kwargs)
+    return decorated
 
 # Função para consultar o banco de dados (arquivo Excel)
 def consultar_banco(email, senha):
@@ -33,19 +65,32 @@ def consultar_banco(email, senha):
 def verificar_dados():
     # Recebe os dados no formato JSON do corpo da requisição
     dados = request.get_json()
-    
     # Obtém o valor do campo 'email' e 'senha' do JSON enviado
     email = dados.get('email')
     senha = dados.get('senha')
 
     # Verifica se o email foi informado na requisição
     if email is None:
-        return jsonify({"status": "error", "message": "email ou senha não informado"}), 400
+        return jsonify({
+            "status": "error", 
+            "message": "email ou senha não informado"
+        }), 400
 
     if consultar_banco(email, senha):
-        return jsonify({"status": "success", "redirect_to": "http://127.0.0.1:5000/home"}), 200
+        token = jwt.encode({
+            'user': email,
+            'exp': datetime.utcnow() + timedelta(hours=1)},
+            Chave_Ultra_Secreta, algorithm="HS256") 
+        return jsonify({
+            "status": "success", 
+            "redirect_to": "http://127.0.0.1:5000/home",
+            "token": token
+        }), 200
     else:
-        return jsonify({"status": "error", "message": "email não encontrado"}), 404
+        return jsonify({
+            "status": "error", 
+            "message": "email não encontrado"
+        }), 404
 
 @app.route('/cadastro', methods=['POST'])
 def cadastro():
@@ -67,17 +112,30 @@ def cadastro():
     usuario_existente = cursor.fetchone()
 
     if usuario_existente:
-        return jsonify({'status': 'error', 'message': 'E-mail já cadastrado.'}), 400
+        return jsonify({
+            'status': 'error', 
+            'message': 'E-mail já cadastrado.'
+        }), 400
 
     # Inserindo o novo usuário no banco de dados
     cursor.execute("INSERT INTO users (nome, email, idade, senha) VALUES (?, ?, ?, ?)", (nome, email, idade, senha))
     conn.commit()
     
-    return jsonify({"status": "success", "redirect_to": "http://127.0.0.1:5000/home"}), 200
+        # Gera token após cadastro bem-sucedido
+    token = jwt.encode({
+        'user': email,
+        'exp': datetime.utcnow() + timedelta(hours=1)
+    }, Chave_Ultra_Secreta, algorithm='HS256')
+
+    return jsonify({
+        "status": "success", 
+        "redirect_to": "http://127.0.0.1:5000/home"
+    }), 200
 
 
 # Rota para a página 'home', que será renderizada quando o redirecionamento ocorrer
 @app.route('/home')
+# @token_required
 def home():
     # Retorna o template 'home.html' para ser exibido ao usuário
     return render_template("home.html")
