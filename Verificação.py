@@ -95,7 +95,7 @@ def atividades_page():
     return render_template("atividades.html")
 
 @app.route('/login1')
-def login_page():
+def verificacao():
     return render_template("verificação.html")
 
 # Frase motivacional
