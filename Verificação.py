@@ -9,6 +9,9 @@ import jwt
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from functools import wraps
+from flask import Blueprint, Flask, jsonify, request, redirect, url_for, render_template
+
+verificacoes_bp = Blueprint('verificacoes', __name__, template_folder='templates')
 
 # Carrega as variáveis de ambiente do arquivo .env
 load_dotenv()
