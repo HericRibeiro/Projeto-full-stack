@@ -95,7 +95,7 @@ def verificar_dados():
             "message": "email não encontrado"
         }), 404
 
-@verificacoes_bp.route('/cadastro', methods=['POST'])
+@verificacoes_bp.route('/cadastro_usuario', methods=['POST'])
 def cadastro():
     # Conexão com o banco de dados SQLite
     conn = sqlite3.connect('C:/Users/hericribeiro/E-commerce/database/ecommerce.db')
