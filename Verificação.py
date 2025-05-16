@@ -64,7 +64,7 @@ def consultar_banco(email, senha):
         return False
 
 # Rota da API para verificar os dados (será chamada com o método POST)
-@app.route('/verificar_dados', methods=['POST'])
+@verificacoes_bp.route('/verificar_dados', methods=['POST'])
 def verificar_dados():
     # Recebe os dados no formato JSON do corpo da requisição
     dados = request.get_json()
@@ -95,7 +95,7 @@ def verificar_dados():
             "message": "email não encontrado"
         }), 404
 
-@app.route('/cadastro', methods=['POST'])
+@verificacoes_bp.route('/cadastro', methods=['POST'])
 def cadastro():
     # Conexão com o banco de dados SQLite
     conn = sqlite3.connect('C:/Users/hericribeiro/E-commerce/database/ecommerce.db')
@@ -137,25 +137,25 @@ def cadastro():
 
 
 # Rota para a página 'home', que será renderizada quando o redirecionamento ocorrer
-@app.route('/home')
+@verificacoes_bp.route('/home')
 # @token_required
 def home():
     # Retorna o template 'home.html' para ser exibido ao usuário
     return render_template("home.html")
 
-@app.route('/cadastro')
+@verificacoes_bp.route('/cadastroHome')
 def cadastro_page():
     return render_template("cadastro.html")
 
-@app.route('/login')
+@verificacoes_bp.route('/login')
 def login_page():
     return render_template("login.html")
 
-@app.route('/atividades')
+@verificacoes_bp.route('/atividades')
 def atividades_page():
     return render_template("atividades.html")
 
-@app.route('/login1')
+@verificacoes_bp.route('/login1')
 def verificacao():
     return render_template("verificação.html")
 
@@ -173,12 +173,8 @@ frases_motivacionais = [
     "Você está exatamente onde precisa estar para começar algo novo."
 ]
 
-@app.route('/motivacional', methods=['GET'])
+@verificacoes_bp.route('/motivacional', methods=['GET'])
 def get_frases():
     # Retorna 3 frases aleatórias por chamada
     frases_aleatorias = random.sample(frases_motivacionais, 1)
     return jsonify({"frases": frases_aleatorias})
-
-# Inicia o servidor Flask na porta 5000 com o modo de depuração ativado
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)

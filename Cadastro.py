@@ -1,18 +1,22 @@
 import sqlite3
+from dotenv import load_dotenv
+import os
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from flask import Blueprint, Flask, jsonify, request, redirect, url_for, render_template
 
-verificacoes_bp = Blueprint('verificacoes', __name__, template_folder='templates')
+cadastro_bp = Blueprint('cadastro', __name__)
 
 app = Flask(__name__)
 CORS(app)
+load_dotenv()
 
+banco_dados = os.getenv('BANCO_DADOS')
 
-@app.route('/cadastro', methods=['POST'])
+@cadastro_bp.route('/cadastro', methods=['POST'])
 def cadastro():
     # Conexão com o banco de dados SQLite
-    conn = sqlite3.connect('C:/Users/hericribeiro/E-commerce/database/ecommerce.db')
+    conn = sqlite3.connect(banco_dados)
     cursor = conn.cursor()
 
     # Recebe os dados de cadastro do usuário
@@ -36,6 +40,3 @@ def cadastro():
         conn.commit()
         
         return jsonify({"status": "success", "redirect_to": "http://127.0.0.1:5000/home"}), 201
-
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
