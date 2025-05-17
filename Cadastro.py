@@ -39,4 +39,4 @@ def cadastro():
         cursor.execute("INSERT INTO users (nome, email, senha) VALUES (?, ?, ?)", (nome, idade, email, senha))
         conn.commit()
         
-        return jsonify({"status": "success", "redirect_to": "http://127.0.0.1:5000/home"}), 201
+        return jsonify({"status": "success", "redirect_to": "https://projeto-full-stack-d2gi.onrender.com/home"}), 201

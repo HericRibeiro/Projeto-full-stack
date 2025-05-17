@@ -86,7 +86,7 @@ def verificar_dados():
             Chave_Ultra_Secreta, algorithm="HS256") 
         return jsonify({
             "status": "success", 
-            "redirect_to": "http://127.0.0.1:5000/home",
+            "redirect_to": "https://projeto-full-stack-d2gi.onrender.com/home",
             "token": token
         }), 200
     else:
@@ -132,7 +132,7 @@ def cadastro():
 
     return jsonify({
         "status": "success", 
-        "redirect_to": "http://127.0.0.1:5000/home"
+        "redirect_to": "https://projeto-full-stack-d2gi.onrender.com/home"
     }), 200
 
 
