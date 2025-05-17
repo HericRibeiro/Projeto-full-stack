@@ -113,7 +113,7 @@ function atualizarDisplay() {
 
 async function carregarFrases() {
   try {
-    const response = await fetch("http://127.0.0.1:5000/motivacional"); // troque pela URL da sua API se for hospedada
+    const response = await fetch("https://projeto-full-stack-d2gi.onrender.com/motivacional"); // troque pela URL da sua API se for hospedada
     const data = await response.json();
 
     const frasesDiv = document.getElementById("frases");
