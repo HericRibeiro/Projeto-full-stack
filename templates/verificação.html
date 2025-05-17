@@ -31,8 +31,7 @@
     fetch("https://projeto-full-stack-d2gi.onrender.com/verificar_dados", {
         method: "POST",
         headers: {
-        "Content-Type": "application/json",
-        "Authorization": localStorage.getItem("token"), // Define o tipo de conteúdo como JSON
+        "Content-Type": "application/json" // Define o tipo de conteúdo como JSON
         },
         body: JSON.stringify({ email: email, senha: senha }), // Envia o email como JSON no corpo da requisição
     })

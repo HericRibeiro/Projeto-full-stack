@@ -79,10 +79,6 @@ def verificar_dados():
         }), 400
 
     if consultar_banco(email, senha):
-        token = jwt.encode({
-            'user': email,
-            'exp': datetime.utcnow() + timedelta(hours=1)},
-            Chave_Ultra_Secreta, algorithm="HS256") 
         return jsonify({
             "status": "success", 
             "redirect_to": "https://projeto-full-stack-d2gi.onrender.com/home",
