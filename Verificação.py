@@ -48,7 +48,7 @@ def token_required(f):
 # Função para consultar o banco de dados (arquivo Excel)
 def consultar_banco(email, senha):
     # Conecta ao banco de dados SQLite
-    conn = sqlite3.connect('C:/Users/hericribeiro/E-commerce/database/ecommerce.db')
+    conn = sqlite3.connect('database/ecommerce.db')
     cursor = conn.cursor()
 
     # Consulta os dados na tabela 'usuarios' onde o email e a senha correspondem aos parâmetros
@@ -68,7 +68,6 @@ def consultar_banco(email, senha):
 def verificar_dados():
     # Recebe os dados no formato JSON do corpo da requisição
     dados = request.get_json()
-    # Obtém o valor do campo 'email' e 'senha' do JSON enviado
     email = dados.get('email')
     senha = dados.get('senha')
 
@@ -97,8 +96,7 @@ def verificar_dados():
 @verificacoes_bp.route('/cadastro_usuario', methods=['POST'])
 def cadastro():
     # Conexão com o banco de dados SQLite
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    DB_PATH = os.path.join(BASE_DIR, 'database', 'ecommerce.db')
+    DB_PATH = "database/ecommerce.db"
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 

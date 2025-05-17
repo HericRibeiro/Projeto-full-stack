@@ -11,14 +11,12 @@ app = Flask(__name__)
 CORS(app)
 load_dotenv()
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-db_relative_path = os.getenv("BANCO_DADOS")
-DB_PATH = os.path.join(BASE_DIR, db_relative_path)
+DB_PATH = "database/ecommerce.db"
 
 @cadastro_bp.route('/cadastro', methods=['POST'])
 def cadastro():
     # Conexão com o banco de dados SQLite
-    conn = sqlite3.connect(db_relative_path)
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
     # Recebe os dados de cadastro do usuário
