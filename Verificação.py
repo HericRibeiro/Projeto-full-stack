@@ -87,7 +87,6 @@ def verificar_dados():
         return jsonify({
             "status": "success", 
             "redirect_to": "https://projeto-full-stack-d2gi.onrender.com/home",
-            "token": token
         }), 200
     else:
         return jsonify({
