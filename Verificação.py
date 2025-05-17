@@ -97,7 +97,9 @@ def verificar_dados():
 @verificacoes_bp.route('/cadastro_usuario', methods=['POST'])
 def cadastro():
     # Conexão com o banco de dados SQLite
-    conn = sqlite3.connect('C:/Users/hericribeiro/E-commerce/database/ecommerce.db')
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    DB_PATH = os.path.join(BASE_DIR, 'database', 'ecommerce.db')
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
     # Recebe os dados de cadastro do usuário
