@@ -7,8 +7,8 @@ from Cadastro import cadastro_bp
 app = Flask(__name__)
 CORS(app)
 
-app.register_blueprint(verificacoes_bp, urlpreix='/api')
-app.register_blueprint(cadastro_bp, urlpreix='/api')
+app.register_blueprint(verificacoes_bp, urlprefix='/api')
+app.register_blueprint(cadastro_bp, urlprefix='/api')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
